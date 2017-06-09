@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/westfieldlabs/data_janitor.svg?branch=master)](https://travis-ci.org/westfieldlabs/data_janitor)
+
 # DataJanitor
 
 DataJanitor allows you to run your in-application Active Record validations as well as additional data audit validations across all records in a table or database at will. This is particular helpful in evolving validations and finding which records will no longer pass validation, as well as periodically performing more extensive audit validations without the real-time cost. Additional validations can be written to run only during the audit, or can be also be run during create. This allows time to migrate existing data to the new validation requirements while ensuring new data meets the current validation standards.

@@ -38,9 +38,11 @@ module DataJanitor
           # TODO: run numericality test
         when :string, :text
           if field_val.nil?
+            # Almost never does an app need to distinguish between nil and empty string, yet nil needs special handling in all cases
             report_error.call "cannot be nil. Use an empty string instead if that's what you wanted."
           else
-            report_error.call "cannot have leading/trailing whitespaces" if field_val =~ /^\s/ || field_val =~ /\s$/
+            # Our apps strings output text to the web where whitespace is meaningless
+            report_error.call "cannot have leading/trailing whitespaces" if field_val =~ /\A\s/ || field_val =~ /\s\z/
             # TODO: Should we constrain to certain encoding types?
           end
         end

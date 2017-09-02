@@ -1,5 +1,6 @@
+require "rails"
 require "data_janitor/version"
-require 'rails'
+require "data_janitor/data_janitor"
 require "data_janitor/universal_validator"
 require "data_janitor/audit_validatable"
 

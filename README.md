@@ -81,6 +81,24 @@ rake data_janitor:cleanse[SomeModel]
 
 This will apply all the fixes that do not require semantic analysis of the data (e.g. replace `nil` values with `""` for strings)
 
+Data Janitor has the experimental ability to perform some built-in type checks, only a small part of which is implemented and currently tends to be noisy when on. It currently defaults to off. Each audit command takes an option string that defaults to 'no-type-checks' and can be set other colon-separated values to turn off specific checks. The values are:
+type-checks (or any other string not below)
+no-type-checks
+no-boolean
+no-decimal
+no-float
+no-integer
+no-string
+no-text
+no-array
+
+For example:
+```
+rake data_janitor:audit_model[SomeModel,no-string:no-boolean]
+rake data_janitor:audit[tmp/out.json,false,false,no-string:no-boolean]
+```
+
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/westfield/data_janitor.
